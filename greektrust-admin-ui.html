@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                   
+            }
+            * {
+                box-sizing: border-box;
+            }
+            #searchInput {
+                width: 90%;
+                margin: 20px;
+                margin-left: 60px;
+                padding: 12px 20px 12px 40px;
+                border-radius: 25px;
+
+            }
+            table{
+                font-family: arial,sans-serif;
+                width: 90%;
+                margin-left: 60px;
+            }
+           td,th{
+            text-align: left;
+            padding: 10px;
+           
+           }
+
+        </style>
+
+    </head>
+    <body>
+        <h1>Geektrust Admin UI</h1>
+        <div class="searchbar">
+    
+            <input type="text" id="searchInput" placeholder="search by a name, email or role." title="type in a name, email or role.">
+        </div>
+        <table id="admin_Table">
+            <tr id="column_Names">
+                <th><input type="checkbox" name="select_all_checkbox" id="select_All" onclick="select_All()"></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </table>
+    </body>
+
+</html>
