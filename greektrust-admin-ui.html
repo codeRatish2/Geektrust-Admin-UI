@@ -1,42 +1,115 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://kit.fontawesome.com/366f4b4073.js" crossorigin="anonymous"></script>
         <style>
             body{
+                background-color:white;
                    
             }
             * {
                 box-sizing: border-box;
             }
             #searchInput {
-                width: 90%;
+                width: 80%;
                 margin: 20px;
                 margin-left: 60px;
                 padding: 12px 20px 12px 40px;
-                border-radius: 25px;
+                
 
             }
             table{
                 font-family: arial,sans-serif;
-                width: 90%;
+                width: 80%;
                 margin-left: 60px;
+        
             }
            td,th{
-            text-align: left;
-            padding: 10px;
+                text-align: left;
+                padding: 15px;
+                border: 1px solid #eee;
+            }
+            
+
+             
+
            
-           }
+            input[type="checkbox"]{
+              height: 20px;
+              width: 20px;
+              background-color: #eee;
+              margin-left: 20px;
+              margin-top: 9px;
+    
+            }
 
         </style>
+        <script>
+            async function getData(){
+                const response = await fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json');
+            
+                var data = await response.json();
+                var admin = data;
+                for(var data of admin){
+                    create_table(data);
+                }
+            }
+            // function create_list(data){
+            //     let adminrow = document.createElement('li')
+            //     adminrow.className = 'admin_table_body_row';
+
+            //     let name = document.createElement('li')
+            //     name.innerText = data.name
+            //     let email= document.createElement('li')
+            //     email.innerText = data.email
+            //     let role = document.createElement('li')
+            //     role.innerText = data.role
+            //     let action = document.createElement('li')
+            //     action.innerText = data.action
+                
+
+            //     // adminrow.append(name,email,role,action);
+                
+            //     document.getElementById('admin_table').append(name,email,role,action);
+            // }
+            function create_table(data){
+                let adminRow = document.createElement('tr')
+                adminRow.className = 'AdminTableBodyRow';
+                adminRow.id = `row${data.id}`
+                let checkbox = document.createElement('input')
+                checkbox.type = 'checkbox';
+                checkbox.value = data.name;
+                checkbox.name = `delete_row`;
+                checkbox.id = data.id;
+                let name = document.createElement('td')
+                name.innerText = data.name
+                let email= document.createElement('td')
+                email.innerText = data.email
+                let role = document.createElement('td')
+                role.innerText = data.role
+                let action = document.createElement('td')
+                action.innerHTML = 
+                adminRow.append(checkbox,name,email,role,action)
+                document.getElementById('admin_table').append(adminRow);
+
+                
+                    
+            }
+    
+
+
+
+            
+        </script>
 
     </head>
-    <body>
+    <body onload='getData();'>
         <h1>Geektrust Admin UI</h1>
         <div class="searchbar">
     
             <input type="text" id="searchInput" placeholder="search by a name, email or role." title="type in a name, email or role.">
         </div>
-        <table id="admin_Table">
+        <table id="admin_table">
             <tr id="column_Names">
                 <th><input type="checkbox" name="select_all_checkbox" id="select_All" onclick="select_All()"></th>
                 <th>Name</th>
@@ -44,6 +117,7 @@
                 <th>Role</th>
                 <th>Action</th>
             </tr>
+
         </table>
     </body>
 
