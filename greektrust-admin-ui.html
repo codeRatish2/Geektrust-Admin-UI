@@ -24,24 +24,23 @@
                 margin-left: 60px;
         
             }
-           td,th{
+            td,th{
                 text-align: left;
                 padding: 15px;
-                border: 1px solid #eee;
-            }
+                
             
-
-             
-
-           
+            }
+            .AdminTableBodyRow{
+                border: 1px solid black;
+            }
             input[type="checkbox"]{
               height: 20px;
               width: 20px;
               background-color: #eee;
               margin-left: 20px;
-              margin-top: 9px;
+              margin-top: 20px;
     
-            }
+        }
 
         </style>
         <script>
@@ -91,10 +90,43 @@
                 action.innerHTML = 
                 adminRow.append(checkbox,name,email,role,action)
                 document.getElementById('admin_table').append(adminRow);
-
-                
-                    
             }
+            
+            // function create_search(){
+            //     var i,input, filter,data_name, data_role, data_email,admintable,table_row;
+            //     input = document.getElementById("searchInput").value;
+            //     filter = input.value.toUpperCase();
+            //     admintable = document.getElementById("admin_table")
+            //     table_row = admintable.getElementsByTagName('tr');
+
+            //     for(i=0; i < table_row.length; i++ ){
+            //         data_name = table_row[i].getElementsByTagName('td')[0];
+            //         data_email = table_row[i].getElementsByTagName('td')[1];
+            //         data_role  = table_row[i].getElementsByTagName('td')[2];
+
+            //         txtvalue = txt
+
+            //     }
+            // }
+            function select_all_checkbox(){
+                var select_All = document.getElementsByName('delete_row');
+                for (var i=0;i < select_All.length; i++){
+                    if (select_All[i].type == "checkbox")
+                    select_All[i].checked = true;
+
+                }
+            }
+            // function deselect_all_checkbox(){
+            //     var select_All = document.getElementsByTagName('delete_row');
+            //     for (var i=0;i < select_All.length; i++){
+            //     }
+            // }
+
+         
+                
+            
+
+            
     
 
 
@@ -110,7 +142,7 @@
             <input type="text" id="searchInput" placeholder="search by a name, email or role." title="type in a name, email or role.">
         </div>
         <table id="admin_table">
-            <tr id="column_Names">
+            <tr id="admin_names">
                 <th><input type="checkbox" name="select_all_checkbox" id="select_All" onclick="select_All()"></th>
                 <th>Name</th>
                 <th>Email</th>
@@ -118,7 +150,15 @@
                 <th>Action</th>
             </tr>
 
+
         </table>
+        <nav class= "pagination_cointainer">
+            <button class="pagination_button" id="prev_button" area-label="prev page" title="pervious page">&lt;</button>
+        
+             <div id="pagination_numbers"></div>
+
+            <button class="pagination_button" id="next_button" area-label="next page" title="next page">&gt;</button>
+        </nav>
     </body>
 
 </html>
