@@ -114,6 +114,24 @@
                         chk[i].checked = checkBox.checked;
                     } 
                 }
+             function remove_row(){
+                let delete_rw =  document.getElementsByClassName('fa-trash');
+                for(let i=0;i < delete_rw.length;i++)
+                 delete_rw[i].addEventListener('click',function(){
+                    this.parentElement.parentElement.style.display = 'none';
+                });
+            }
+            function edit_row(){ 
+                
+                let edit_rw = document.getElementsByTagName('td');
+                  for(let i=0; i < edit_rw.length; i++)
+
+                   edit_rw[i].addEventListener('click',function(){
+                    this.parentElement.contentEditable = 'true';
+                   });
+                
+            }    
+                  
                 
             
             
